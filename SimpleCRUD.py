@@ -28,7 +28,19 @@ def run():  #Primary function that starts the program and allows the user to cho
             read_item()
 
 def write_in():
-    pass
+    while True:
+        tbe = input("Please Enter an item: ").title()
+        storage.append(tbe)
+        print("Entry Saved!")
+        time.sleep(0.5)
+        another_entry = pyip.inputChoice(["Yes", "No"], prompt="Do you want to add another item? (Yes/No): ")
+        if another_entry == "No":
+            break  # Exit the loop if the user chooses "No"
+    
+
+
+
+
 
 def read_item():
     pass
