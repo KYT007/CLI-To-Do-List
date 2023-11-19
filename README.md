@@ -1,7 +1,6 @@
-The program contained in this repository will be a C.R.U.D. type app I will be creating and continously adding to as 
-I continue to learn more about the python programming language
-and software engineering and development in general. This application will start out simple and be updates as I learn more;
-As I learn databases, how to implement GUIs this program will grow and change.
+The program contained in this repository will be a C.R.U.D. type app I will be creating and continously adding to as I continue to learn more about the python programming language
+and software engineering. This application will start out simple and be updates as I expand my knowledebase.
+As I learn the usage of databases, how to implement GUIs and similar concepts, this program will grow and change.
 
 Update for SimpleCRUD.py 11/19/2023
 
