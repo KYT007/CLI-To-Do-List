@@ -14,7 +14,7 @@ storage = [] # for now, we will use this to store our to do list items. Later on
 # a database will be used. Its important to note this program is only a prototype.
 
 def main_menu(): #Displays all menu options.
-    print("Main Menu \n. (A.) Make Note \n (B.) Delete Note \n (C.) Edit Note")
+    print("Main Menu \n. (A.) Make Note \n (B.) View Note \n (C.) Edit Note")
 
 def run():  #Primary function that starts the program and allows the user to choose options
     # more options and functionalities TBA.
@@ -26,6 +26,8 @@ def run():  #Primary function that starts the program and allows the user to cho
             write_in()
         elif choice == "B":
             read_item()
+        elif choice == "C":
+            edit_item(storage)
 
 def write_in():
     # For this section, we prompt the user for input asigned to variables,
@@ -59,7 +61,13 @@ def read_item():
         RRchoice = pyip.inputChoice(["A", "B"])
         if RRchoice == "A":
             break 
-def edit_item():
-    pass
-
+def edit_item(storage):
+    print("Choose an item to edit: ")
+    while True:
+        if not storage:
+            print("looks like there's no items here! ")
+            return
+        for index, item in enumerate(storage, start=1):
+            print(f"{index}, {item.Description}")
+        indy = pyip.inputStr("Select item: ")
 run()
