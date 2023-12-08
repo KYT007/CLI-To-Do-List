@@ -31,3 +31,13 @@ The flow control of this program is flawed from the maker's perspective. Current
 ##### Fixed spelling errors in the readme.
 
 Those were embarassing. 
+
+12/8/2023
+# Fixed flow control issues that made the program not make sense.
+
+Program organized to always return to main event loop after user is done using write, read, or edit functions.
+The issue previouisly was bugging me. No pun intended.
+
+## Added functionality.
+
+Delete functionality added. Adding proper date detection functionality with pyip is incoming.

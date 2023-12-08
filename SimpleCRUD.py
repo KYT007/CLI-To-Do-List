@@ -13,21 +13,22 @@ class ToDoItems:
 storage = [] # for now, we will use this to store our to do list items. Later on,
 # a database will be used. Its important to note this program is only a prototype.
 
-def main_menu(): #Displays all menu options.
-    print("Main Menu \n. (A.) Make Note \n (B.) View Note \n (C.) Edit Note")
+   
 
 def run():  #Primary function that starts the program and allows the user to choose options
     # more options and functionalities TBA.
     while True:
-        main_menu()
-        print("Please select an option: ")
-        choice = pyip.inputChoice(['A', 'B', 'C'])
+        print("Please select an option: \n Main Menu \n. (A.) Make Note \n (B.) View Note \n (C.) Edit Note (D.) Delete Note")
+        
+        choice = pyip.inputChoice(['A', 'B', 'C', 'D'])
         if choice == "A":
             enter_item()
         elif choice == "B":
             read_item()
         elif choice == "C":
             edit_item()
+        elif choice == "D":
+            delete_item()
 
 def enter_item():
     # For this section, we prompt the user for input asigned to variables,
@@ -44,7 +45,7 @@ def enter_item():
         time.sleep(0.5)
         another_entry = pyip.inputChoice(["Yes", "No"], prompt="Do you want to add another item? (Yes/No): ")
         if another_entry == "No":
-            run()
+            break
 
     
 
@@ -63,6 +64,7 @@ def read_item():
             break
         elif user_choice == "B":
             edit_item()
+
 #The edit functionality allows the user to edit to-do items in storage. 
 def edit_item():
     print(f"Please choose an item to edit: ")
@@ -85,11 +87,16 @@ def edit_item():
         storage[index_slection -1] = edited_item
         print(f"****" + "Item updated!" + "*****")
         time.sleep(0.3)
-        run()
+        break
 
 def delete_item():
-    pass
-
+    print(f"Please choose an item to delete: ")
+    while True:
+        if not storage:
+            print("looks like there's no items here! ")
+            return
+        for index, item in enumerate(storage, start=1):
+            print(f"{index}, {item.Title}, {item.Description}, {item.Due_Date}")
         
         
 run()
