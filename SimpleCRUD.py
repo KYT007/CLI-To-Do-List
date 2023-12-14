@@ -67,7 +67,7 @@ def read_item():
 def edit_item():
     print(f"Please choose an item to edit: ")
     while True:
-        if not storage:
+        if not storage:     #Checks if storage is empty or not, each function will do this
             print("looks like there's no items here! ")
             return
         for index, item in enumerate(storage, start=1):
@@ -88,9 +88,10 @@ def edit_item():
         break
 
 def delete_item():
+    #This is our delete item function.
     print(f"*****" + "DELETE ITEMS" + "*****")
     while True:
-        if not storage:
+        if not storage:     
             print("looks like there's no items here! ")
             continue
         for index, item in enumerate(storage, start=1):
