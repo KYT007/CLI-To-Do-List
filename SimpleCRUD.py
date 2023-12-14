@@ -18,7 +18,7 @@ storage = [] # for now, we will use this to store our to do list items. Later on
 def run():  #Primary function that starts the program and allows the user to choose options
     # more options and functionalities TBA.
     while True:
-        print("Please select an option: \n Main Menu \n. (A.) Make Note \n (B.) View Note \n (C.) Edit Note (D.) Delete Note")
+        print("Please select an option: \n Main Menu \n. (A.) Make Note \n (B.) View Note \n (C.) Edit Note \n (D.) Delete Note")
         
         choice = pyip.inputChoice(['A', 'B', 'C', 'D'])
         if choice == "A":
@@ -52,9 +52,7 @@ def enter_item():
 def read_item():
     while True:
         for item in storage:
-            print("\nTitle:", item.Title)
-            print("Description:", item.Description)
-            print("Due Date:", item.Due_Date +"\n")
+            print(f"{item.Title}, {item.Description}, {item.Due_Date}")
         if not storage:
             print("Looks like your storage is empty!")
 
@@ -90,13 +88,23 @@ def edit_item():
         break
 
 def delete_item():
-    print(f"Please choose an item to delete: ")
+    print(f"*****" + "DELETE ITEMS" + "*****")
     while True:
         if not storage:
             print("looks like there's no items here! ")
-            return
+            continue
         for index, item in enumerate(storage, start=1):
             print(f"{index}, {item.Title}, {item.Description}, {item.Due_Date}")
+
+        selection = pyip.inputInt(min=1, max=len(storage), prompt= "Select index of item to be deleted, or '::' to quit: ")
+        if selection:
+            print("Are you sure? This action cannot be undone! y/n: ")
+            choice = pyip.inputStr()
+            if choice == "no":
+                break
         
+            
+            
+                
         
 run()
