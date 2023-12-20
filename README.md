@@ -51,4 +51,4 @@ Delete functionality under construction. Got rid of unnecessary print statements
 #Added Functionality.
 Added delete functionality in its entirety. Functionality to ensure valid dates added via pyinputplus added.
 More flow control isues addressed. Main change main menu loop function to incorporate the use of "inputMenu()" from pyip rather than "inputChoice()". Unnecessary print statements removed. Future versions will use an alternative method to print statements.
-SQLite Database functionality to make this app fully functional and usable as a command line tool currently in development process in a separate directory.
+SQLite Database functionality to make this app fully functional and usable as a command line tool currently in development process in a separate directory. 
