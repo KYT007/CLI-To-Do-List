@@ -1,6 +1,9 @@
 import time, pyinputplus as pyip, sys, sqlite3
 # Importing the necessary modules, including SQLite3 for database functionality.
 
+###TO BE ADDED###
+#Code that allows user to exit functions at the beginning of function, before performing an operation.
+
 conn = sqlite3.connect('storage.db')
 crudcursor = conn.cursor()
 
@@ -156,10 +159,8 @@ def edit_item():
         if another_edit == "No":
             run()
             
-
-
-        
-
+#The delete function, allows user to delete items in storage.
+            
 def delete_item():
     while True:
         # Display existing entries to the user
@@ -192,24 +193,19 @@ def delete_item():
                 continue
             answer = pyip.inputYesNo("Are you sure you want to delete this item? This can't be undone: ")
             if answer == 'yes':
-                # Update the database with the new values
+                # Update the database with the new values and notify the user.
                 crudcursor.execute('DELETE FROM to_do_items WHERE id = ?', (item_id_to_delete))
                 conn.commit()
+            elif answer == 'no':
+                continue
             print(f"Item with ID {item_id_to_delete} updated successfully.")
         except ValueError:
             print("Invalid item ID! Please enter a valid item ID: ")
             break
+        #Ask if the user would like to delete another item.
         another_delete = pyip.inputChoice(["Yes", "No"], prompt="Do you want to edit another item? (Yes/No): ")
         if another_delete == "No":
             run()
-            
-
-
-
-        
-   
-            
-            
                 
-        
+
 run()
