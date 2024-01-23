@@ -24,7 +24,7 @@ class ToDoItems:
 
 
 
-storage = [] 
+
 
 def run():  #Primary function that starts the program and allows the user to choose options
     # more options and functionalities TBA.
@@ -162,8 +162,51 @@ def edit_item():
 
 def delete_item():
     while True:
-        print('under construction ')
-        break
+        # Display existing entries to the user
+        crudcursor.execute('SELECT * FROM to_do_items')
+        rows = crudcursor.fetchall()
+
+        if not rows:
+            print("No items found.")
+            return
+
+        print("Existing items:")
+        for row in rows:
+            item_id, title, description, due_date = row
+            print(f"Item ID: {item_id}")
+            print(f"Title: {title}")
+            print(f"Description: {description}")
+            print(f"Due Date: {due_date}")
+            
+
+        # Prompt the user to select an item to edit
+        try:
+            item_id_to_delete = pyip.inputInt("Enter the Item ID you want to delete: ")
+
+            # Check if the selected item_id exists
+            crudcursor.execute('SELECT * FROM to_do_items WHERE id = ?', (item_id_to_delete,))
+            existing_item = crudcursor.fetchone()
+
+            if not existing_item:
+                print(f"Item with ID {item_id_to_delete} not found.")
+                continue
+            answer = pyip.inputYesNo("Are you sure you want to delete this item? This can't be undone: ")
+            if answer == 'yes':
+                # Update the database with the new values
+                crudcursor.execute('DELETE FROM to_do_items WHERE id = ?', (item_id_to_delete))
+                conn.commit()
+            print(f"Item with ID {item_id_to_delete} updated successfully.")
+        except ValueError:
+            print("Invalid item ID! Please enter a valid item ID: ")
+            break
+        another_delete = pyip.inputChoice(["Yes", "No"], prompt="Do you want to edit another item? (Yes/No): ")
+        if another_delete == "No":
+            run()
+            
+
+
+
+        
    
             
             
