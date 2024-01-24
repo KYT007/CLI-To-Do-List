@@ -194,11 +194,11 @@ def delete_item():
             answer = pyip.inputYesNo("Are you sure you want to delete this item? This can't be undone: ")
             if answer == 'yes':
                 # Update the database with the new values and notify the user.
-                crudcursor.execute('DELETE FROM to_do_items WHERE id = ?', (item_id_to_delete))
+                crudcursor.execute('DELETE FROM to_do_items WHERE id = ?', (item_id_to_delete,))
                 conn.commit()
             elif answer == 'no':
                 continue
-            print(f"Item with ID {item_id_to_delete} updated successfully.")
+            print(f"Item with ID {item_id_to_delete} deleted successfully.")
         except ValueError:
             print("Invalid item ID! Please enter a valid item ID: ")
             break
@@ -209,3 +209,5 @@ def delete_item():
                 
 
 run()
+
+#Additional functionality to allow users to quit in the middle of using functions to be added in future iterations.
